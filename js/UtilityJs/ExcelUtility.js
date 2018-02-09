@@ -9,13 +9,15 @@ function handleFile(event){
 		alert("Please select a excel file");
 		return false;
 	}
-	var readFile = new FileReader();
+	var readFile = new FileReader(); 
 	readFile.onload = function(event){
 		var data = new Uint8Array(event.target.result);
 		workbook = XLSX.read(data, {type:"array"});
 		workSheet = workbook.Sheets["Sheet1"];
 		range = XLSX.utils.decode_range(workSheet['!ref']);
 		scope.columnBind = getColumnHeaderArray();
+		$('.selectpicker').selectpicker('render');
+		$('.selectpicker').selectpicker('refresh');
 		fileSelected = true;
 	};
 	readFile.readAsArrayBuffer(event.target.files[0]);	
