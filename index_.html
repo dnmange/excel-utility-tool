@@ -1,0 +1,81 @@
+<!-- 
+/*
+** Author: Darshan Mange
+** Description: Excel Utility to get invalid emails and replace empty values
+** Change History:
+*/
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Excel Utility </title>
+	<script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+	<script src="UtilityJs/FileSaver.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+	
+</head>
+<body>
+	<div class="pure-g">
+		<div class="pure-u-1-4">
+			<img style="height:70px;width:80%" src="images/logo.png">
+		</div>
+		<div class="pure-u-3-4">
+			
+			<h2 >Utility tool to check invaid email/phone and replace empty values</h2>
+			
+		</div>
+	</div><br/><br/>
+
+	<div class="pure-g">
+	    
+	    <div class="pure-u-1-4">
+		    <p>
+			    <div class="pure-u-1-2">
+			    	<input type="file" id="files" name="files" onchange="handleFile(event);"/>	
+			    </div>
+			    <div class="pure-u-1-2">	
+					<span>File type supported is .xlsx</span>
+			    </div>		    	
+		    </p>
+		</div>
+	    <div class="pure-u-1-4">
+		    <p>
+			    <select name="selectedValue" onchange="displayDivColumnDiv();">
+				<option value="email">Get Invalid Emails</option>
+				<option value="phone">Get Invalid Phone</option>
+				<option value="replaceColumnValue">Replace Empty Column Values</option>
+				</select>
+			</p>
+		</div>
+		<div class="pure-u-1-4" id="columnDiv" style="display:none">
+			<p>
+				<select data-epilepsy-bind = "columnBind" name="selectedValue" id="replaceSelected">
+					<option value="invalid">Please choose a file</option>
+				</select>	
+			</p>
+		</div>
+	    <div class="pure-u-1-4">
+		    <p>
+			    <input class="pure-button pure-button-primary" type="submit" value="Submit" onclick="onSubmitData();">
+			</p>
+		</div>
+	</div>
+	
+	<br/><br/>
+	<div class="pure-g">
+		<div class="pure-u-1-1">
+			<table class="pure-table" id="invalidEmailTable" style="display:none">
+				<thead data-epilepsy-bind = "columnBind">		
+				</thead>
+				<tbody data-epilepsy-bind = "rowBind">
+				</tbody>		
+			</table>
+		</div>	
+	</div>
+	
+	
+
+</body>
+<script src="UtilityJs/BindData.js"></script>
+<script src="UtilityJs/ExcelUtility.js"></script>
+</html>
